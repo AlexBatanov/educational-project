@@ -4,5 +4,5 @@ from django.shortcuts import render
 def index(request):
     return HttpResponse('главная страница')
 
-def categories(request):
+def categories(request, catid):
     return HttpResponse('категории')
