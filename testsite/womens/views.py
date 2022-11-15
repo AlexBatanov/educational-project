@@ -1,8 +1,22 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-def index(request):
-    return HttpResponse('главная страница')
+from .models import Women
 
-def categories(request, catid):
-    return HttpResponse('категории')
+menu = ["О сайте", "Добавить статью", "Обратная связь", "Войти"]
+
+def index(request):
+    posts = Women.objects.all()
+
+    return render(
+        request,
+        'womens/index.html',
+        {'posts': posts,
+            'menu': menu,
+            'title': 'Главная страница'})
+
+def about(request):
+    return render(
+        request,
+        'women/about.html',
+        {'menu': menu, 'title': 'О сайте'})
